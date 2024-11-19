@@ -1,51 +1,36 @@
-import { Button } from "@/components/ui/button"
-import qs from "qs"
+"use client"
+import {z} from 'zod'
+import {zodResolver} from "@hookform/resolvers/zod";
+import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
+import React from "react";
+import {Input} from "@/components/ui/input";
+import {useForm} from "react-hook-form";
+import {Button} from "@/components/ui/button";
+import InterestForm from "@/components/forms/interest-form";
 
-const homePageQuery = qs.stringify({
-    populate: {
-        blocks: {
-            on: {
-                "layout.hero-section": {
-                    populate: {
-                        image: {
-                            fields: ["url", "alternativeText"],
-                        },
-                        link: {
-                            populate: true,
-                        },
-                    },
-                },
-            },
-        },
-    },
+const formSchema = z.object({
+    email: z.string().email({
+        message: 'Ogiltlig e-postadress',
+    })
 })
 
-async function getStrapiData(path: string) {
-    const baseUrl = "http://127.0.0.1:1337"
+export default function Home() {
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            email: '',
+        }
+    })
 
-    const url = new URL(path, baseUrl)
-    url.search = homePageQuery
-
-    try {
-        const response = await fetch(url.href)
-        const data = await response.json()
-        return data
-    } catch (error) {
-        console.error(error)
+    function onsubmit (values: z.infer<typeof formSchema>) {
+        console.log(values)
     }
-}
-
-export default async function Home() {
-    const strapiData = await getStrapiData("/api/home-page")
-
-    console.log(strapiData)
-
-    const { title, description } = strapiData.data
 
     return (
         <main>
-            <h1>{title}</h1>
-            <p>{description}</p>
+            <div className="flex items-center justify-center min-h-screen bg-gray">
+                <InterestForm />
+            </div>
         </main>
     )
 }
