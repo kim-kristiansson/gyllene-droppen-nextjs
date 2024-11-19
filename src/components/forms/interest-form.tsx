@@ -7,10 +7,12 @@ import {Input} from "@/components/ui/input";
 import {useForm} from "react-hook-form";
 import {Button} from "@/components/ui/button";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
+import gylleneDroppen from "@/app/public/static/images/gyllene-droppen.png";
+import Image from 'next/image'
 
 const formSchema = z.object({
     email: z.string().email({
-        message: 'Ogiltlig e-postadress',
+        message: 'Ogiltig e-postadress',
     })
 })
 
@@ -29,7 +31,7 @@ export default function InterestForm() {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Anmäl ditt intresse för whiskyklubben Gyllene Droppen</CardTitle>
+                <CardTitle>Intresseanmälan för Gyllene Droppen</CardTitle>
                 <CardDescription>Fyll i din e-postadress för att visa ditt intresse för vår whiskyklubb. Vi kommer att kontakta dig med mer information om våra evenemang och medlemskap.</CardDescription>
             </CardHeader>
             <Form {...form}>

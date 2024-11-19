@@ -1,12 +1,13 @@
 "use client"
 import {z} from 'zod'
 import {zodResolver} from "@hookform/resolvers/zod";
-import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import React from "react";
 import {Input} from "@/components/ui/input";
 import {useForm} from "react-hook-form";
 import {Button} from "@/components/ui/button";
 import InterestForm from "@/components/forms/interest-form";
+import Image from "next/image";
+import gylleneDroppen from "@/app/public/static/images/gyllene-droppen.png";
 
 const formSchema = z.object({
     email: z.string().email({
@@ -28,7 +29,13 @@ export default function Home() {
 
     return (
         <main>
-            <div className="flex items-center justify-center min-h-screen bg-gray">
+            <div className="flex pt-4 flex-col gap-5 items-center min-h-screen bg-gray">
+                <Image
+                    alt={'Gyllene Droppen'}
+                    src={gylleneDroppen}
+                    style={{maxWidth: '300px', height: "auto"}}
+                />
+
                 <InterestForm />
             </div>
         </main>
