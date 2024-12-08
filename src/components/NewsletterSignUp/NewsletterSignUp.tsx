@@ -1,8 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import InputField from "@/components/InputField/InputField";
 import Button from "@/components/Button/Button";
+import SocialLinks from "@/components/SocialLinks/SocialLinks";
+import { PiInstagramLogoLight } from "react-icons/pi";
 
 export default function NewsletterSignUp() {
     const handleInputChange = (value: string) => {
@@ -16,11 +17,16 @@ export default function NewsletterSignUp() {
                 <div className="grid gap-4">
                     <h1 className="text-center text-darkBrown text-4xl font-serif">Gyllene Droppen</h1>
                     <p className="text-center text-darkBrown">Intresseanmälan</p>
-                    <InputField className="placeholder-darkBrown" id={"userEmail"} type={"email"} placeholder={"Din e-postadress"}
+                    <InputField className="placeholder-darkBrown" id={"userEmail"} type={"email"}
+                                placeholder={"Din e-postadress"}
                                 onChange={handleInputChange}/>
                     <div className="grid justify-center">
                         <Button label="Skicka" onClick={() => console.log('ok')}/>
                     </div>
+                              <hr className="my-4 border-t border-darkBrown"/>
+
+                    <p className="text-center text-darkBrown">Följ eller kontakta oss</p>
+                    <SocialLinks/>
                 </div>
             </div>
         </div>
