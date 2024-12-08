@@ -13,6 +13,11 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const greatVibes = localFont({
+  src: "./fonts/GreatVibes-Regular.ttf",
+  variable: "--font-great-vibes",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   title: "Gyllene Droppen",
@@ -27,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable} antialiased`}
       >
         {children}
       </body>
