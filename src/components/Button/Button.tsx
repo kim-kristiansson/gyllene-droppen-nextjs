@@ -1,8 +1,8 @@
 "use client"
-import React from "react";
+import React, {ReactNode} from "react";
 
 interface ButtonProps {
-    label?: string;
+    label?: ReactNode;
     onClick?: (event?: React.MouseEvent<HTMLButtonElement>) => void;
     type?: "button" | "submit" | "reset";
     className?: string;
