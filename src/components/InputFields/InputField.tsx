@@ -32,7 +32,7 @@ export default function InputField({id, type, placeholder, onChange, className, 
                 onChange={handleChange}
                 value={value}
             />
-            <label htmlFor={id} className={`${error ? "text-red-500 peer-placeholder-shown:text-red-500" : ""} bg-beige absolute left-[9] -top-0.5 text-sm peer-placeholder-shown:text-base transition-all text-darkBrown peer-placeholder-shown:text-darkBrown peer-placeholder-shown:top-[17] peer-placeholder-shown:left-[9] peer-focus:-top-0.5 peer-focus:text-darkBrown peer-focus:text-sm pointer-text pointer-events-none`}>
+            <label htmlFor={id} className={`${error ? "text-red-500 peer-placeholder-shown:text-red-500" : ""} bg-beige absolute left-[9] -top-2.5 text-sm peer-placeholder-shown:text-base transition-all text-darkBrown peer-placeholder-shown:text-darkBrown peer-placeholder-shown:top-2 peer-placeholder-shown:left-[9] peer-focus:-top-2.5 peer-focus:text-darkBrown peer-focus:text-sm pointer-text pointer-events-none`}>
                 {placeholder}</label>
             <p
                 className={`text-sm ${error ? "text-red-500" : "text-transparent"} text-start pl-3`}

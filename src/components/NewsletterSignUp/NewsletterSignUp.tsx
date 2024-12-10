@@ -3,7 +3,6 @@
 import SocialLinks from "@/components/SocialLinks/SocialLinks";
 import React from "react";
 import NewsletterForm from "@/components/Forms/NewsletterForm/NewsletterForm";
-import {subscribeToNewsletter} from "@/formActions/subscribeToNewsletter";
 
 export default function NewsletterSignUp() {
     return (
@@ -13,7 +12,7 @@ export default function NewsletterSignUp() {
                     className="absolute top-0 bg-beige left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-[family-name:var(--font-great-vibes)] text-gold font-bold text-4xl">GD</span>
                 <div className="grid gap-3">
                     <h1 className="text-center text-darkBrown text-4xl font-serif">Gyllene Droppen</h1>
-                    <NewsletterForm action={subscribeToNewsletter}/>
+                    <NewsletterForm/>
                     <hr className="my-3 border-t border-darkBrown"/>
                     <p className="text-center text-darkBrown">Följ eller kontakta oss</p>
                     <SocialLinks/>

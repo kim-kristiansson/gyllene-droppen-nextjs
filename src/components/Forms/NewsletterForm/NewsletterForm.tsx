@@ -1,40 +1,53 @@
-import React, {useActionState, useEffect} from "react";
+"use client";
+
+import React, { useState } from "react";
+import { subscribeToNewsletter } from "@/api/newsletter/subscribeToNewsletter";
 import InputField from "@/components/InputFields/InputField";
 import Button from "@/components/Button/Button";
-import {subscribeToNewsletter} from "@/formActions/subscribeToNewsletter";
 
 export default function NewsletterForm() {
-    const [state, formAction, isPending] = useActionState(subscribeToNewsletter, {});
-    const handleInputChange = (value: string) => {
-        console.log(value);
+    const [email, setEmail] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string>();
+    const [success, setSuccess] = useState<string | null>(null);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        setError("");
+        setSuccess(null);
+
+        try {
+            const result = await subscribeToNewsletter(email);
+            setSuccess("Subscription successful!");
+        } catch (err: any) {
+            setError(err.message || "Failed to subscribe.");
+        } finally {
+            setLoading(false);
+        }
     };
 
-    useEffect(() => {
-        console.log(state);
-
-    }, [state]);
-
     return (
-        <form action={formAction}>
-            <div>
-                <p className="text-center text-darkBrown font-medium border-darkBrown mb-4">
-                    Intresseanmälan
-                </p>
+        <form onSubmit={handleSubmit} className="space-y-4">
+            <p className="text-center text-darkBrown font-medium border-darkBrown mb-4">
+                Intresseanmälan
+            </p>
 
-                <InputField
-                    className="placeholder-darkBrown mt-2"
-                    id={"userEmail"}
-                    name={"userEmail"}
-                    type={"email"}
-                    placeholder={"E-postadress"}
-                    onChange={handleInputChange}
+            <InputField
+                id="userEmail"
+                name="userEmail"
+                type="email"
+                placeholder="E-postadress"
+                onChange={setEmail}
+                error={error}
+            />
+
+            <div className="grid justify-center">
+                <Button
+                    type="submit"
+                    label={loading ? "Skickar..." : "Skicka"}
+                    disabled={loading}
                 />
-                <div className="grid justify-center">
-                    {/*<FormSubmit />*/}
-                    {
-                        isPending ? <p>Sending...</p> : <Button label="Skicka" type="submit" />
-                    }
-                </div>
             </div>
         </form>
     );
