@@ -1,16 +1,21 @@
-import React from "react";
+import React, {useActionState, useEffect} from "react";
 import InputField from "@/components/InputFields/InputField";
 import Button from "@/components/Button/Button";
 import {subscribeToNewsletter} from "@/formActions/subscribeToNewsletter";
-import FormSubmit from "@/components/Forms/FormSubmit/FormSubmit";
 
 export default function NewsletterForm() {
+    const [state, formAction, isPending] = useActionState(subscribeToNewsletter, {});
     const handleInputChange = (value: string) => {
         console.log(value);
     };
 
+    useEffect(() => {
+        console.log(state);
+
+    }, [state]);
+
     return (
-        <form action={subscribeToNewsletter}>
+        <form action={formAction}>
             <div>
                 <p className="text-center text-darkBrown font-medium border-darkBrown mb-4">
                     Intresseanmälan
@@ -23,10 +28,12 @@ export default function NewsletterForm() {
                     type={"email"}
                     placeholder={"E-postadress"}
                     onChange={handleInputChange}
-                    error={""}
                 />
                 <div className="grid justify-center">
-                    <FormSubmit />
+                    {/*<FormSubmit />*/}
+                    {
+                        isPending ? <p>Sending...</p> : <Button label="Skicka" type="submit" />
+                    }
                 </div>
             </div>
         </form>

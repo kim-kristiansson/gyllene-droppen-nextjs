@@ -1,7 +1,8 @@
 import {z} from "zod";
 
-export async function subscribeToNewsletter(formData: any)
+export async function subscribeToNewsletter(prevState: any, formData: any)
 {
+    // console.log("Form data:", formData);
     // const schema = z.object({
     //     email: z.string().email(),
     // })
@@ -9,7 +10,6 @@ export async function subscribeToNewsletter(formData: any)
     // const data = schema.parse({
     //     email: formData.get("userEmail"),
     // })
-
 
     const email: string | null = formData.get("userEmail");
 
