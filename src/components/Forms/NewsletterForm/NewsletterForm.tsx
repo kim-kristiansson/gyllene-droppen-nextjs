@@ -1,11 +1,13 @@
-"use client";
-
 import React, { useState } from "react";
+import { z } from "zod";
 import { subscribeToNewsletter } from "@/api/newsletter/subscribeToNewsletter";
 import InputField from "@/components/InputFields/InputField";
 import Button from "@/components/Button/Button";
 
-export default function NewsletterForm() {
+// Zod schema for validation
+const emailSchema = z.string().email("Ogiltig e-postadress");
+
+export default function NewsletterForm({ onSuccess }: { onSuccess: () => void }) {
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string>();
@@ -13,13 +15,21 @@ export default function NewsletterForm() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);
         setError("");
         setSuccess(null);
 
+        // Validate email with Zod
+        const validation = emailSchema.safeParse(email);
+        if (!validation.success) {
+            setError(validation.error.errors[0].message);
+            return;
+        }
+
+        setLoading(true);
+
         try {
-            const result = await subscribeToNewsletter(email);
-            setSuccess("Subscription successful!");
+            await subscribeToNewsletter(email);
+            onSuccess();
         } catch (err: any) {
             setError(err.message || "Failed to subscribe.");
         } finally {
