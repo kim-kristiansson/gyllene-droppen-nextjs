@@ -34,7 +34,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable} antialiased`}
       >
+      <div className="h-screen grid items-center max-w-2xl mx-auto">
         {children}
+      </div>
       </body>
     </html>
   );

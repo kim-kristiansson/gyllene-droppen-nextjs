@@ -1,8 +1,8 @@
 import NewsletterSignUp from "@/components/NewsletterSignUp/NewsletterSignUp";
 
-export default function Home() {
+export default function HomePage() {
   return (
-      <div className="h-screen grid items-center max-w-2xl mx-auto">
+      <div>
           <NewsletterSignUp/>
       </div>
   );

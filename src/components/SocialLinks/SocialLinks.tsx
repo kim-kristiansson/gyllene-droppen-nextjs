@@ -9,19 +9,19 @@ export default function SocialLinks() {
     return (
         <div className="flex justify-center gap-4">
             {/* E-Mail */}
-            <SocialLink href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME" DefaultIcon={FaRegEnvelope} HoverIcon={FaEnvelope} />
+            <SocialLink href="mailto:info@gyllenedroppen.se" DefaultIcon={FaRegEnvelope} HoverIcon={FaEnvelope} />
 
             {/* Twitter */}
-            <SocialLink href="https://snapchat.com/YOUR_TWITTER_USERNAME" DefaultIcon={FaSnapchat} HoverIcon={FaSnapchatGhost}/>
+            {/*<SocialLink href="https://snapchat.com/YOUR_TWITTER_USERNAME" DefaultIcon={FaSnapchat} HoverIcon={FaSnapchatGhost}/>*/}
 
             {/* Facebook */}
-            <SocialLink href="https://www.facebook.com/YOUR_PAGE_NAME" DefaultIcon={AiOutlineFacebook} HoverIcon={AiFillFacebook} />
+            {/*<SocialLink href="https://www.facebook.com/YOUR_PAGE_NAME" DefaultIcon={AiOutlineFacebook} HoverIcon={AiFillFacebook} />*/}
 
             {/* Instagram */}
-            <SocialLink href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME" DefaultIcon={AiOutlineInstagram} HoverIcon={AiFillInstagram} />
+            <SocialLink href="https://www.instagram.com/gyllene_droppen" DefaultIcon={AiOutlineInstagram} HoverIcon={AiFillInstagram} />
 
             {/* LinkedIn */}
-            <SocialLink href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME" DefaultIcon={AiOutlineLinkedin} HoverIcon={AiFillLinkedin} />
+            {/*<SocialLink href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME" DefaultIcon={AiOutlineLinkedin} HoverIcon={AiFillLinkedin} />*/}
         </div>
     );
 }
