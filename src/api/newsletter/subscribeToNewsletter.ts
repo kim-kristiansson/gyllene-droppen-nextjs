@@ -1,5 +1,5 @@
 export async function subscribeToNewsletter(email: string): Promise<any> {
-    const response: Response = await fetch("https://localhost:7254/api/newsletter/register", {
+    const response: Response = await fetch("https://gyllenedroppen.se/api/newsletter/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
