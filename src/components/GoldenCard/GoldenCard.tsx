@@ -2,9 +2,6 @@
 
 import SocialLinks from "@/components/SocialLinks/SocialLinks";
 import React, { useState } from "react";
-import NewsletterForm from "@/components/Forms/NewsletterForm/NewsletterForm";
-import Carousel from "@/components/Carousel/Carousel";
-import { GoCheckCircle } from "react-icons/go";
 
 
 export default function GoldenCard({children}: any) {
